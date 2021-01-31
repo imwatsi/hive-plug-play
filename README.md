@@ -2,7 +2,7 @@
 
 **Customizable block streaming and parsing microservice for custom_json ops on Hive.**
 
-*Warning: this project is still under heavy development. It is not yet suitable for buidling production apps with.*
+*Warning: this project is still under heavy development. It is not yet suitable for building production apps with.*
 
 ## Development
 
