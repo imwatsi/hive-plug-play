@@ -13,11 +13,13 @@ For example:
 
 ### Op Structure
 
+```
 [
     {"ver": 1, "app": ""},      dictionary
     "op_internal_name",         string(64)
     {} or []                    dictionary/list
 ]
+```
 
 Ops are broadcast using an array as the main container.
 
