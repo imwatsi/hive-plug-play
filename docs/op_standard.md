@@ -11,7 +11,7 @@ For example:
 - `follow`: blockchain-wide follower protocol
 - `3speak`: 3Speak application
 
-### Op Structure
+### Op JSON Data Structure
 
 ```
 [
@@ -21,7 +21,7 @@ For example:
 ]
 ```
 
-Ops are broadcast using an array as the main container.
+Ops are broadcast using an array as the main container in the `json` field.
 
 - The first element contains the `header` which can contain application-specific metadata such as:
     - `ver` [int]: the version of the op, within the application/protocol
