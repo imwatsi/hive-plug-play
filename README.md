@@ -19,6 +19,19 @@
 - `cd hive-plug-play`
 - `pip3 install -e .`
 
+**Configuration:**
+
+Currently, the config is loaded from a `config.dat` file, which needs to be in the `hive-plug-play/hive_plug_play` root folder. A new config handling method will be released in the near future. Here's a sample config, for running a local node:
+
+```
+db_username=postgres
+db_password=password
+server_host=127.0.0.1
+server_port=8080
+ssl_cert=
+ssl_key=
+```
+
 **Run:**
 
 *From command:*
