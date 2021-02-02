@@ -138,9 +138,10 @@ class PlugPlayDb:
     
     # CUSTOM JSON OPS
 
-    def add_op(self, block_num, op):
+    def add_op(self, block_num, transaction_id, op):
         self._insert('custom_json_ops', {
             'block_num': block_num,
+            'transaction_id': transaction_id,
             'req_auths': op['required_auths'],
             'req_posting_auths': op['required_posting_auths'],
             'op_id': op['id'],

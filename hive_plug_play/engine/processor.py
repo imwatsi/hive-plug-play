@@ -16,10 +16,12 @@ class BlockProcessor:
         timestamp = block['timestamp']
 
         cls.db.add_block(block_num, block_hash, prev, timestamp)
-        for trans in block['transactions']:
+        transactions = block['transactions']
+        for i in range(len(transactions)):
+            trans = transactions[i]
             for op in trans['operations']:
                 if op['type'] == 'custom_json_operation':
-                    cls.db.add_op(block_num, op['value'])
+                    cls.db.add_op(block_num, block['transaction_ids'][i], op['value'])
         cls.db._save()
         cls.block_num = block_num
         cls.block_time = timestamp
