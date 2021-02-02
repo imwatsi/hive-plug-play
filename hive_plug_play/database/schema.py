@@ -21,9 +21,10 @@ class DbSchema:
             CREATE TABLE IF NOT EXISTS custom_json_ops (
                 id serial PRIMARY KEY,
                 block_num integer NOT NULL,
+                transaction_id char(40) NOT NULL,
                 req_auths varchar(16)[],
                 req_posting_auths varchar(16)[],
-                op_id varchar(32) NOT NULL,
+                op_id varchar(128) NOT NULL,
                 op_json json NOT NULL
             );"""
         self.tables['custom_json_ops'] = custom_json_ops
