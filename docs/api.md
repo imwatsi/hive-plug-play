@@ -100,4 +100,4 @@ Example response:
 
 ## Plugs
 
-- [community](api/plugs/community.md): Hivemind communities protocol
+- [community](docs/plugs/community.md): Hivemind communities protocol
