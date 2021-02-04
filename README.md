@@ -4,6 +4,10 @@
 
 *Warning: this project is still under heavy development. It is not yet suitable for building production apps with.*
 
+## Documentation
+
+- [API Documentation](/docs/api.md)
+
 ## Development
 
 - Python 3.6 required
