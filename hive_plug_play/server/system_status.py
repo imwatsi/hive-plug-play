@@ -12,3 +12,10 @@ class SystemStatus:
     @classmethod
     def get_sync_status(cls):
         return dict(cls.sync_status) if cls.sync_status is not None else None
+    
+    @classmethod
+    def get_latest_block(cls):
+        status = cls.get_sync_status()
+        if status:
+            return status['latest_block']
+        return None
