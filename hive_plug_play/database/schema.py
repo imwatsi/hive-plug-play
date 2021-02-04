@@ -13,7 +13,7 @@ class DbSchema:
                 num integer PRIMARY KEY,
                 hash char(40) NOT NULL,
                 prev char(40),
-                created_at timestamp NOT NULL
+                timestamp timestamp NOT NULL
             );"""
         self.tables['blocks'] = blocks
 
