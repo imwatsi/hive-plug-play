@@ -131,9 +131,18 @@ class PlugPlayDb:
             'num': block_num,
             'hash': block_hash,
             'prev': prev,
-            'created_at': created_at
+            'timestamp': created_at
 
         })
+
+    def get_block_range(self, start_time, end_time):
+        query = f"""
+                    SELECT min(num), max(num) FROM blocks
+                        WHERE timestamp BETWEEN {start_time} AND {end_time};
+                """
+        res = self.db.select(query)
+        return res
+
 
     
     # CUSTOM JSON OPS
