@@ -43,4 +43,4 @@ ssl_key=
 - `cd hive_plug_play`
 - `python3 run.py`
 
-The node does not currently sync from the first block. It syncs from block `50924300` to aid the iterative stage of development it's in.
+The node does not currently sync from the first block. It syncs from block `51042000` to aid the iterative stage of development it's in.
