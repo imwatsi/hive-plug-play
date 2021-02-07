@@ -63,6 +63,7 @@ Example response:
     "jsonrpc": "2.0",
     "result": [
         {
+            "transaction_id": "d6e25ed641486746a1d4b85c93b70a06ded96777",
             "req_auths": [],
             "req_posting_auths": ["gillianpearce"],
             "op_id": "sm_find_match",
@@ -72,6 +73,7 @@ Example response:
             }
         }, 
         {
+            "transaction_id: "ce73c16abf81da58471229033326a2f2ddee8055",
             "req_auths": [],
             "req_posting_auths": ["russia-btc"],
             "op_id": "sm_team_reveal",

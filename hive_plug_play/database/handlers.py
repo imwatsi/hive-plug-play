@@ -158,7 +158,7 @@ class PlugPlayDb:
         })
     
     def get_ops_by_block(self, block_num):
-        cols = ['req_auths', 'req_posting_auths', 'op_id', 'op_json']
+        cols = ['transaction_id', 'req_auths', 'req_posting_auths', 'op_id', 'op_json']
         _res = self._select('custom_json_ops', columns=cols, col_filters={'block_num': block_num})
         if _res is None: return []
         result = []
