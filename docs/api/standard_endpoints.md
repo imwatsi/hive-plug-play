@@ -1,6 +1,4 @@
-# API Documentation
-
-## Standard endpoints
+# Standard endpoints
 
 ### ping
 
@@ -97,9 +95,3 @@ Example response:
     "id": 1
 }
 ```
-
----
-
-## Plugs
-
-- [community](docs/plugs/community.md): Hivemind communities protocol
