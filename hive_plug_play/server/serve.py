@@ -7,7 +7,7 @@ from hive_plug_play.database.handlers import PlugPlayDb
 from hive_plug_play.server import api_endpoints
 from hive_plug_play.server.system_status import SystemStatus
 from hive_plug_play.server.normalize import normalize_types
-from hive_plug_play.server.plug_endpoints import community
+from hive_plug_play.server.plug_endpoints import community, follow
 
 def build_methods():
     methods = Methods()
@@ -18,6 +18,10 @@ def build_methods():
     )})
     methods.add(**{'plug_play_api.community.' + method.__name__: method for method  in (
         community.get_subscribe_ops,
+    )})
+    methods.add(**{'plug_play_api.follow.' + method.__name__: method for method  in (
+        follow.get_follow_ops,
+        follow.get_reblog_ops
     )})
 
     return methods
