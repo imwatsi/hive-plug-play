@@ -20,7 +20,7 @@ class DbSchema:
         custom_json_ops = """
             CREATE TABLE IF NOT EXISTS custom_json_ops (
                 id serial PRIMARY KEY,
-                block_num integer NOT NULL,
+                block_num integer NOT NULL REFERENCES blocks.num,
                 transaction_id char(40) NOT NULL,
                 req_auths varchar(16)[],
                 req_posting_auths varchar(16)[],
