@@ -5,7 +5,7 @@ HIVE_NODES = [
     "https://hive.roelandp.nl", "https://rpc.ausbit.dev", "https://api.pharesim.me",
     "https://api.deathwing.me"
 ]
-START_BLOCK = 51042000
+START_BLOCK = 51250000
 
 UTC_TIMESTAMP_FORMAT = "%Y-%m-%dT%H:%M:%S"
 
