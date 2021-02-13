@@ -14,7 +14,7 @@ async def get_follow_ops(context, follower=None, followed=None,  block_range=Non
     )
     result = []
     if sql:
-        res = db.db.select(sql)
+        res = db.db.select(sql) or []
         for entry in res:
             result.append(populate_by_schema(
                 entry, ['acc_auths', 'following', 'follower']
@@ -32,7 +32,7 @@ async def get_reblog_ops(context, reblog_account=None, author=None, permlink=Non
     )
     result = []
     if sql:
-        res = db.db.select(sql)
+        res = db.db.select(sql) or []
         for entry in res:
             result.append(populate_by_schema(
                 entry, ['acc_auths', 'account', 'author', 'permlink']
