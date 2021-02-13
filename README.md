@@ -6,7 +6,7 @@
 
 ## Documentation
 
-- [API Documentation](/docs/api.md)
+- [API Documentation](/docs/api/api.md)
 
 ## Development
 
