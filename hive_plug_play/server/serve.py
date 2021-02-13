@@ -18,6 +18,8 @@ def build_methods():
     )})
     methods.add(**{'plug_play_api.community.' + method.__name__: method for method  in (
         community.get_subscribe_ops,
+        community.get_unsubscribe_ops,
+        community.get_flag_post_ops
     )})
     methods.add(**{'plug_play_api.follow.' + method.__name__: method for method  in (
         follow.get_follow_ops,
