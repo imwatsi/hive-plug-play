@@ -6,4 +6,5 @@
 
 **Plug Endpoints:**
 
-- [community](docs/api/plugs/community.md): Hivemind communities protocol
+- [community](docs/api/plugs/community.md): Hivemind Communities protocol
+- [follow](docs/api/plugs/follow.md): Follow protocol
