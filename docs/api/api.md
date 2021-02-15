@@ -1,5 +1,11 @@
 # API Documentation
 
+*Documentation for the API endpoints available on Hive Plug & Play*
+
+*The development server: https://plug-play-dev.imwatsi.com/*
+
+---
+
 **[Standard endpoints](docs/api/standard_endpoints.md)**
 
 ---

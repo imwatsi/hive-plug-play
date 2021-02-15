@@ -1,5 +1,7 @@
 # Standard endpoints
 
+**Dev Server:** https://plug-play-dev.imwatsi.com/
+
 ### ping
 
 *Ping endpoint*

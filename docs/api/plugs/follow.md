@@ -2,6 +2,8 @@
 
 Search endpoints for the Follow protocol
 
+**Dev Server:** https://plug-play-dev.imwatsi.com/
+
 ### get_follow_ops
 
 *Returns a list of global follow ops within the specified block range (or last 24 hours if not specified)*
@@ -10,7 +12,7 @@ Search endpoints for the Follow protocol
 
 - `follower`:      <hive_account> (optional)
 - `followed`:      <hive_account> (optional)
-- `block_range`:    [<lower>, <upper>] (optional, default=28800 blocks from latest)
+- `block_range`:    [lower, upper] (optional, default=28800 blocks from latest)
 
 Example payload:
 
@@ -52,7 +54,7 @@ Example response:
 - `reblog_account`: <hive_account> (optional)
 - `author`:         <hive_account> (optional)
 - `permlink`:       <post_permlink> (optional)
-- `block_range`:    [<lower>, <upper>] (optional, default=28800 blocks from latest)
+- `block_range`:    [lower, upper] (optional, default=28800 blocks from latest)
 
 Example payload:
 

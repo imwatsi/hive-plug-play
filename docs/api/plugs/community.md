@@ -2,6 +2,8 @@
 
 Search endpoints for the Hivemind Communities protocol
 
+**Dev Server:** https://plug-play-dev.imwatsi.com/
+
 ### get_subscribe_ops
 
 *Returns a list of subscribe ops made for a community within a specified block range (or last 24 hours if not specified)*
@@ -9,7 +11,7 @@ Search endpoints for the Hivemind Communities protocol
 **Params:**
 
 - `community`:      <hive_account> (optional)
-- `block_range`:    [<lower>, <upper>] (optional, default=28800 blocks from latest)
+- `block_range`:    [lower, upper] (optional, default=28800 blocks from latest)
 
 Example payload:
 
@@ -44,7 +46,7 @@ Example response:
 **Params:**
 
 - `community`:      <hive_account> (optional)
-- `block_range`:    [<lower>, <upper>] (optional, default=28800 blocks from latest)
+- `block_range`:    [lower, upper] (optional, default=28800 blocks from latest)
 
 Example payload:
 
