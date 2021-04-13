@@ -56,4 +56,4 @@ def make_request(method, params=[]):
                 # TODO: error, safe shutdown, log
                 print(e)
                 os._exit(1)
-            time.sleep(0.1)
+            time.sleep(0.5)
