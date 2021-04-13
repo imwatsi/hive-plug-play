@@ -2,7 +2,7 @@ import os
 from threading import Thread
 
 
-from hive_plug_play.config import load_config
+from hive_plug_play.config import Config
 from hive_plug_play.database.handlers import PlugPlayDb
 from hive_plug_play.database.setup import DbSetup
 from hive_plug_play.engine.processor import BlockProcessor
@@ -11,7 +11,7 @@ from hive_plug_play.hive.server_requests import make_request
 from hive_plug_play.server.serve import run_server
 from hive_plug_play.utils.tools import START_BLOCK
 
-config = load_config()
+config = Config.config
 
 
 def read_block_direct(block_num):
