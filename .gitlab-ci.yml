@@ -1,0 +1,24 @@
+stages:
+  - deploy
+
+variables:
+  DEPLOY_DIR: "/home/ubuntu/deployed/hive-plug-play/"
+
+
+deploy:
+  stage: deploy
+  script:
+    - pwd
+    - whoami
+    - rm -rf $DEPLOY_DIR
+    - mkdir -p $DEPLOY_DIR
+    - cp -r * $DEPLOY_DIR
+    - cd $DEPLOY_DIR
+    - pwd
+    - sudo pip3 install .
+    - sudo pkill -f hive_plug_play || true
+    - sudo nohup hive_plug_play >> /home/ubuntu/plug_play.log 2>&1&
+  only:
+    - master
+  tags:
+    - plug-play-prod
