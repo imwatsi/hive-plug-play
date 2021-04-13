@@ -1,11 +1,13 @@
 import json
 
 HIVE_NODES = [
-    "https://api.hive.blog", "https://anyx.io", "https://api.openhive.network",
+    "https://api.hive.blog", "https://anyx.io",
     "https://hive.roelandp.nl", "https://rpc.ausbit.dev", "https://api.pharesim.me",
-    "https://api.deathwing.me"
+    "https://api.deathwing.me", "https://hive-api.arcange.eu", "https://hived.emre.sh",
+    "https://api.openhive.network", "https://hived.privex.io", "https://rpc.ecency.com",
+    "https://api.hivekings.com"
 ]
-START_BLOCK = 51250000
+START_BLOCK = 1
 
 UTC_TIMESTAMP_FORMAT = "%Y-%m-%dT%H:%M:%S"
 
