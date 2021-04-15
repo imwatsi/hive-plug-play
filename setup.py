@@ -7,7 +7,7 @@ assert sys.version_info[0] == 3 and sys.version_info[1] >= 6, "Hive Plug & Play 
 
 setup(
     name='hive_plug_play',
-    version='0.2.0',
+    version='0.2.1',
     description='Customizable block streaming and parsing microservice for custom_json ops on Hive.',
     long_description=open('README.md').read(),
     packages=find_packages(exclude=['scripts']),
