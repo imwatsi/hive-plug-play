@@ -9,7 +9,7 @@ from hive_plug_play.hive.server_requests import make_request
 from hive_plug_play.utils.tools import UTC_TIMESTAMP_FORMAT
 from hive_plug_play.server.system_status import SystemStatus
 
-BATCH_SIZE = 100
+BATCH_SIZE = 1000
 IRREVERSIBLE_GAP = 20
 BLOCK_TIME_SECS = 3
 
@@ -53,7 +53,7 @@ class BlockStream:
             upper = start + BATCH_SIZE if (end-start) > BATCH_SIZE else end
             blocks_expected = range(start, upper+1)
             timer_start = datetime.utcnow()
-            with ThreadPoolExecutor(max_workers=20) as executor:
+            with ThreadPoolExecutor(max_workers=50) as executor:
                 futures = (executor.submit(self._fetch_block, block_num) for block_num in blocks_expected)
                 for future in as_completed(futures):
                     res = future.result()
