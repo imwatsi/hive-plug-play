@@ -62,7 +62,10 @@ class PlugPlayDb:
         _values = []
         for col in data:
             _columns.append(col)
-            _values.append(f"%({col})s")
+            if col == 'op_json':
+                _values.append(f"json(%({col})s)")
+            else:
+                _values.append(f"%({col})s")
         columns = ', '.join(_columns)
         values = ', '.join(_values)
         sql = f"INSERT INTO {table} ({columns}) VALUES ({values})"
@@ -154,7 +157,7 @@ class PlugPlayDb:
             'req_auths': op['required_auths'],
             'req_posting_auths': op['required_posting_auths'],
             'op_id': op['id'],
-            'op_json': op['json'].encode('unicode-escape').decode()
+            'op_json': op['json']
         })
     
     def get_ops_by_block(self, block_num):
