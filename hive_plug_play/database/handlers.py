@@ -151,14 +151,21 @@ class PlugPlayDb:
     # CUSTOM JSON OPS
 
     def add_op(self, block_num, transaction_id, op):
-        self._insert('custom_json_ops', {
-            'block_num': block_num,
-            'transaction_id': transaction_id,
-            'req_auths': op['required_auths'],
-            'req_posting_auths': op['required_posting_auths'],
-            'op_id': op['id'],
-            'op_json': op['json'].encode('unicode-escape').decode()
-        })
+        try:
+            _op_json = op['json'].encode('unicode-escape').decode()
+            loaded = json.loads(_op_json)
+            del loaded
+            self._insert('custom_json_ops', {
+                'block_num': block_num,
+                'transaction_id': transaction_id,
+                'req_auths': op['required_auths'],
+                'req_posting_auths': op['required_posting_auths'],
+                'op_id': op['id'],
+                'op_json': _op_json
+            })
+        except:
+            # skip invalid JSON
+            return
     
     def get_ops_by_block(self, block_num):
         cols = ['transaction_id', 'req_auths', 'req_posting_auths', 'op_id', 'op_json']
