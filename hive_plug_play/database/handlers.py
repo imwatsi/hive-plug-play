@@ -154,7 +154,7 @@ class PlugPlayDb:
             'req_auths': op['required_auths'],
             'req_posting_auths': op['required_posting_auths'],
             'op_id': op['id'],
-            'op_json': op['json']
+            'op_json': op['json'].encode('unicode-escape').decode()
         })
     
     def get_ops_by_block(self, block_num):
