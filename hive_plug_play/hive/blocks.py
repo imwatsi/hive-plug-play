@@ -53,7 +53,7 @@ class BlockStream:
             upper = start + BATCH_SIZE if (end-start) > BATCH_SIZE else end
             blocks_expected = range(start, upper+1)
             timer_start = datetime.utcnow()
-            with ThreadPoolExecutor(max_workers=50) as executor:
+            with ThreadPoolExecutor(max_workers=35) as executor:
                 futures = (executor.submit(self._fetch_block, block_num) for block_num in blocks_expected)
                 for future in as_completed(futures):
                     res = future.result()
