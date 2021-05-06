@@ -81,7 +81,7 @@ class BlockStream:
     
     def is_behind_schedule(self):
         current_time = datetime.utcnow()
-        if self._latest_block_time + timedelta(seconds=(BLOCK_TIME_SECS*3)) < current_time:
+        if self._latest_block_time + timedelta(seconds=(BLOCK_TIME_SECS*11)) < current_time:
             return True
         else:
             return False
