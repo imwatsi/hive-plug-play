@@ -107,7 +107,7 @@ class BlockStream:
         # start the stream
         while True:
             current_time = datetime.utcnow()
-            if current_time > self._latest_block_time + timedelta(seconds=(BLOCK_TIME_SECS*3)):
+            if current_time > self._latest_block_time + timedelta(seconds=(BLOCK_TIME_SECS*10)):
                 next_block = self._latest_block + 1
                 block = self._fetch_block(next_block)
                 self._add_block_to_cache(next_block, block[1])
@@ -116,7 +116,7 @@ class BlockStream:
                     self._latest_block_time,
                     self.is_behind_schedule()
                 )
-            if (self._latest_block_time + timedelta(seconds=(BLOCK_TIME_SECS*6))) < current_time:
+            if (self._latest_block_time + timedelta(seconds=(BLOCK_TIME_SECS*20))) < current_time:
                 # catchup if behind
                 self._fetch_dynamic_global_props()
                 self._fetch_multiple_blocks(
