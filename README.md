@@ -1,8 +1,7 @@
-# Hive Plug & Play [ALPHA]
+# Hive Plug & Play
 
 **Customizable block streaming and parsing microservice for custom_json ops on Hive.**
 
-*Warning: this project is still under heavy development. It is not yet suitable for building production apps with.*
 
 ## Documentation
 
@@ -25,7 +24,7 @@
 
 **Configuration:**
 
-Currently, the config is loaded from a `config.dat` file, which needs to be in the `hive-plug-play/hive_plug_play` root folder. A new config handling method will be released in the near future. Here's a sample config, for running a local node:
+Hive Plug & Play looks for a `config.ini` file in `/etc/hive-plug-play` by default. To set a custom folder, use an environment variable: `export PLUG_PLAY_HOME=/home/ubuntu/.config/hive-plug-play`.
 
 ```
 db_username=postgres
@@ -34,6 +33,8 @@ server_host=127.0.0.1
 server_port=8080
 ssl_cert=
 ssl_key=
+start_block=53877365
+op_ids=["community","notify"]
 ```
 
 **Run:**
@@ -46,5 +47,3 @@ ssl_key=
 
 - `cd hive_plug_play`
 - `python3 run.py`
-
-The node does not currently sync from the first block. It syncs from block `51250000` to aid the iterative stage of development it's in.
