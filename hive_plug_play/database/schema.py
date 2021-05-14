@@ -4,6 +4,7 @@ DB_VERSION = 1
 class DbSchema:
     def __init__(self):
         self.tables = {}
+        self.indexes = {}
         self._populate_tables()
 
     def _populate_tables(self):
@@ -34,3 +35,16 @@ class DbSchema:
                 db_version smallint
             );"""
         self.tables['global_props'] = global_props
+
+    def _create_indexes(self):
+        blocks_ix_num = """
+            CREATE INDEX blocks_ix_num
+            ON blocks (num)
+        ;"""
+        self.indexes['blocks_ix_num'] = blocks_ix_num
+
+        custom_json_ops_ix_block_num = """
+            CREATE INDEX custom_json_ops_ix_block_num
+            ON custom_json_ops (block_num)
+        ;"""
+        self.indexes['custom_json_ops_ix_block_num'] = custom_json_ops_ix_block_num
