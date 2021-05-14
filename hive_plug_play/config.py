@@ -5,7 +5,8 @@ HOME_DIR = os.environ.get('PLUG_PLAY_HOME') or "/etc/hive-plug-play"
 
 CONFIG_FIELDS = [
     'db_username', 'db_password', 'server_host',
-    'server_port', 'ssl_cert', 'ssl_key'
+    'server_port', 'ssl_cert', 'ssl_key',
+    'start_block', 'op_ids'
 ]
 
 
@@ -13,6 +14,10 @@ CONFIG_FIELDS = [
 class Config:
     # TODO: split witness_config from server_config
     config = {}
+
+    @classmethod
+    def validate(cls):
+        assert isinstance(cls.config['op_ids'], list), "config:op_ids must be a list"
 
     @classmethod
     def load_config(cls, config_file):
@@ -39,6 +44,8 @@ class Config:
                     values[_key] = json.loads(_value)
                 else:
                     values[_key] = _value
+        values['start_block'] = int(values['start_block'])
         cls.config = values
+        cls.validate()
 
 Config.load_config(HOME_DIR + "/config.ini")

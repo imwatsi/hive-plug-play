@@ -9,7 +9,6 @@ from hive_plug_play.engine.processor import BlockProcessor
 from hive_plug_play.hive.blocks import BlockStream
 from hive_plug_play.hive.server_requests import make_request
 from hive_plug_play.server.serve import run_server
-from hive_plug_play.utils.tools import START_BLOCK
 
 config = Config.config
 
@@ -37,7 +36,7 @@ def start_sync_service(config):
     db = PlugPlayDb(config)
     db_head = do_fork_check(db)
     if not db_head:
-        stream = BlockStream(START_BLOCK)
+        stream = BlockStream(config['start_block'])
     else:
         block_num = db_head[0] + 1
         stream = BlockStream(block_num)

@@ -27,12 +27,16 @@ class DbSession:
         self.cur.execute(sql, data)
         self.conn.commit()
     
+    def get_query(self,sql, data):
+        return self.cur.mogrify(sql,data)
+    
     def execute(self, sql, data):
         try:
             self.cur.execute(sql, data)
         except Exception as e:
             print(e)
             print(f"SQL:  {sql}")
+            print(f"DATA:   {data}")
             self.conn.rollback()
             raise Exception ('DB error occurred')
     
@@ -104,6 +108,11 @@ class DbSetup:
             print(f'Creating table: {table}... ', end='')
             sql_stat = schema.tables[table]
             cls.cur.execute(sql_stat)
+            print('done')
+        for index in schema.indexes:
+            print(f'Creating index: {index}... ', end='')
+            sql_ind = schema.indexes[index]
+            cls.cur.execute(sql_ind)
             print('done')
         print('DB build complete.')
         cls.conn.commit()

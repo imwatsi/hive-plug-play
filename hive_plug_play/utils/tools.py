@@ -7,7 +7,6 @@ HIVE_NODES = [
     "https://api.openhive.network", "https://hived.privex.io", "https://rpc.ecency.com",
     "https://api.hivekings.com"
 ]
-START_BLOCK = 1
 
 UTC_TIMESTAMP_FORMAT = "%Y-%m-%dT%H:%M:%S"
 
