@@ -24,7 +24,7 @@
 
 **Configuration:**
 
-Hive Plug & Play looks for a `config.ini` file in `/etc/hive-plug-play` by default. To set a custom folder, use an environment variable: `export PLUG_PLAY_HOME=/home/ubuntu/.config/hive-plug-play`.
+Hive Plug & Play looks for a `config.ini` file in `/etc/hive-plug-play` by default. To set a custom folder, use an environment variable: `export PLUG_PLAY_HOME=~/.config/hive-plug-play`.
 
 ```
 db_username=postgres
