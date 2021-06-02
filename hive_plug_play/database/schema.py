@@ -117,4 +117,20 @@ class DbSchema:
             GRANT SELECT ON TABLE public.podping_host_summary TO pg_execute_server_program;
             """
         self.indexes['podping_host_summary']=podping_host_summary
-        podping_host_summary = """
+        podping_count_time_of_day = """
+            -- View: public.podping_count_time_of_day
+
+            -- DROP VIEW public.podping_count_time_of_day;
+
+            CREATE OR REPLACE VIEW public.podping_count_time_of_day
+            AS
+            SELECT DISTINCT date_part('hour'::text, p."timestamp") AS date_part,
+                count(p."timestamp") AS count
+            FROM podping_url_timestamp p
+            GROUP BY (date_part('hour'::text, p."timestamp"))
+            ORDER BY (date_part('hour'::text, p."timestamp"));
+
+            ALTER TABLE public.podping_count_time_of_day
+                OWNER TO postgres;
+        """
+        self.indexes['podping_count_time_of_day']=podping_count_time_of_day
