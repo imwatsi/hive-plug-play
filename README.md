@@ -12,7 +12,7 @@
 - Python 3.6 required
 - PostgreSQL 10+
 
-**Dependencies:**
+### Dependencies:
 Ubuntu Examples:
 - Python3 : `sudo apt install python3 python3-pip`
 - PostgreSQL (install one of):
@@ -21,7 +21,7 @@ Ubuntu Examples:
 | ------------- | ------------- |
 | ```sudo apt install postgresql-all```  | ```sudo apt install postgresql```  |
 
-**Configuration:**
+### Configuration:
 -For default postgres installs **CHANGE THE PASSWORD!**
 ```
 sudo -i -u postgres
@@ -32,13 +32,13 @@ then:
 ```
 follow password prompts
 
-**Configuration** 
+**TLDR** build `config.ini` file:
 TLDR This one-liner from the terminal creates the required `config.ini` file, sets the environment variable and opens nano to edit. Make your changes then use <kbd>ctl</kbd>+<kbd>s</kbd> to save and <kbd>ctl</kbd>+<kbd>x</kbd> to close.
 ```
 mkdir -p ~/.config/hive-plug-play && echo $'db_username=postgres\ndb_password=password\nserver_host=127.0.0.1\nserver_port=8080\nssl_cert=\nssl_key=\nstart_block=53877365\nop_ids=["community","notify"]' > ~/.config/hive-plug-play/config.ini && export PLUG_PLAY_HOME=~/.config/hive-plug-play && nano ~/.config/hive-plug-play/config.ini
 ```
 
-**OR**  follow step by step configuration setup, prior to installation build the `config.ini` file: 
+**OR** step by step build `config.ini` file:
 
 1. Hive Plug & Play requires a `config.ini` file to exist in either:
   - Default file location of `/etc/hive-plug-play` 
@@ -48,7 +48,7 @@ mkdir -p ~/.config/hive-plug-play && echo $'db_username=postgres\ndb_password=pa
 mkdir -p ~/.config/hive-plug-play
 ```
 3. Create the `config.ini` file 
-  - Any editor should do...):
+  - Any text editor should do:
 ```
 db_username=postgres
 db_password=password
@@ -59,13 +59,14 @@ ssl_key=
 start_block=53877365
 op_ids=["community","notify"]
 ```
-**Installation:**
+
+### Installation:
 
 - Clone the repo
 - `cd hive-plug-play`
 - `pip3 install -e .`
 
-**Run:**
+### Run:
 
 *From command:*
 
@@ -76,7 +77,7 @@ op_ids=["community","notify"]
 - `cd hive_plug_play`
 - `python3 run.py`
 
-**Development Documentation**
+## Development Documentation
 
 - [postgresql](https://www.postgresql.org/docs/)
 - [python3](https://docs.python.org/3/)
