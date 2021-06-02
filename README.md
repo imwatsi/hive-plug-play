@@ -53,11 +53,11 @@ mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-p
   1. Hive Plug & Play requires a `config.ini` file to exist in either:
     - Default file location of `/etc/hive-plug-play` 
     - Or use any custom folder by setting an environment variable: `export PLUG_PLAY_HOME=~/.config/hive-plug-play`.
-  1. Build the file directory:
+  2. Build the file directory:
   ```
   mkdir -p ~/.config/hive-plug-play
   ```
-  1. Create the `config.ini` file 
+  3. Create the `config.ini` file 
     - Any text editor should do:
   ```
   db_username=postgres
