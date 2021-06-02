@@ -37,7 +37,7 @@ follow password prompts
 mkdir -p ~/.config/hive-plug-play && echo $'db_username=postgres\ndb_password=password\nserver_host=127.0.0.1\nserver_port=8080\nssl_cert=\nssl_key=\nstart_block=53877365\nop_ids=["community","notify"]' > ~/.config/hive-plug-play/config.ini && export PLUG_PLAY_HOME=~/.config/hive-plug-play && nano ~/.config/hive-plug-play/config.ini
 ```
 
-**Configuration Details**
+** OR -> Configuration Details**
 Prior to installation build the `config.ini` file: 
 
 1. Hive Plug & Play requires a `config.ini` file to exist in either:
