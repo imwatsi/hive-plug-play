@@ -1,10 +1,11 @@
 
-DB_VERSION = 1
+DB_VERSION = 2
 
 class DbSchema:
     def __init__(self):
         self.tables = {}
         self.indexes = {}
+        self.views = {}
         self._populate_tables()
 
     def _populate_tables(self):
@@ -48,3 +49,25 @@ class DbSchema:
             ON custom_json_ops (block_num)
         ;"""
         self.indexes['custom_json_ops_ix_block_num'] = custom_json_ops_ix_block_num
+
+    def _create_views(self):
+        podping_urls_view =  """
+            -- View: public.podping_urls
+
+            -- DROP VIEW public.podping_urls;
+
+            CREATE OR REPLACE VIEW public.podping_urls
+            AS
+            SELECT jo.id AS json_ops_id,
+                json_array_elements_text((jo.op_json ->> 'urls'::text)::json) AS url
+            FROM custom_json_ops jo;
+
+            ALTER TABLE public.podping_urls
+                OWNER TO postgres;
+            COMMENT ON VIEW public.podping_urls
+                IS 'expands all custom json arrays labled as ''urls'' to individual url elements';
+
+            GRANT ALL ON TABLE public.podping_urls TO postgres;
+            GRANT SELECT ON TABLE public.podping_urls TO PUBLIC;
+        """
+        self.indexes['podping_urls'] = podping_urls_view
