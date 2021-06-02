@@ -33,12 +33,22 @@
   \password
   ```
   2. Update the password for the Linux User acount with the same postgresql password `sudo passwd postgres`
-- Restart the PosgreSQL service
+- Back in terminal (`\q` to leave psql prompt) restart the PosgreSQL service
   ```
   sudo systemctl stop postgresql
   sudo systemctl start postgresql
   ```
   Check status with `sudo systemctl status postgresql`
+
+- Create empty database, open postgresql 
+  ```
+  sudo -i -u postgres
+  ```
+  Create datbase
+  ```
+  CREATE DATABASE plug_play;
+  ```
+  Verify database was created with `\l`
 
 ### Configure Hive Plug & Play
 Change user to your postgres account `su postgres` (this shouldn't be required if authenticating via certificate)
