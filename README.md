@@ -78,9 +78,24 @@ mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-p
   ssl_cert=
   ssl_key=
   start_block=54000984
-  op_ids=["podping","hive-hydra"]
-  ;op_ids=["community","notify"]
+  op_ids=["community","notify"]
   ```
+
+### Configure data collection for a specific project or application
+Project specific op_ids
+
+|Project Name| Value |
+|----------------|-------------|
+| [podping](podping.cloud) | podping,hive-hydra |
+| 3speak | 3speak-publish |
+| actifit | actifit |
+| DCity | dcity, dcity-bg-save, dcitystats |
+| peakd | peakd_notify |
+| reblog | reblog |
+| CBM | cbm__backpack__drink_beer,	cbm__balance__deposit,	cbm__building__rent,	cbm__building__restore_condition,	cbm__craft__claim,	cbm__craft__finish_now,	cbm__craft__start,	cbm__daily_quests__claim,	cbm__daily_quests__finish_now,	cbm__daily_quests__start,	cbm__enhancer__claim,	cbm__enhancer__start,	cbm__market__completed_purchase,	cbm__market__completed_sale,	cbm__market__placed_a_sell_order,	cbm__pub__drink_beer,	cbm__pub__sold_beer,	cbm__referral__claim |
+| many more exist | (hundreds) |
+
+Podping specific op_ids are `op_ids=["podping","hive-hydra"]`
 
 ### Installation:
 
