@@ -134,3 +134,33 @@ class DbSchema:
                 OWNER TO postgres;
         """
         self.indexes['podping_count_time_of_day']=podping_count_time_of_day
+        podping_count_day_of_week = """
+            -- View: public.podping_count_day_of_week
+
+            -- DROP VIEW public.podping_count_day_of_week;
+
+            CREATE OR REPLACE VIEW public.podping_count_day_of_week
+            AS
+            SELECT d.day_of_week,
+                    CASE
+                        WHEN d.day_of_week = 1::double precision THEN 'Monday'::text
+                        WHEN d.day_of_week = 2::double precision THEN 'Tuesday'::text
+                        WHEN d.day_of_week = 3::double precision THEN 'Wednesday'::text
+                        WHEN d.day_of_week = 4::double precision THEN 'Thurdsay'::text
+                        WHEN d.day_of_week = 5::double precision THEN 'Friday'::text
+                        WHEN d.day_of_week = 6::double precision THEN 'Saturday'::text
+                        WHEN d.day_of_week = 7::double precision THEN 'Sunday'::text
+                        ELSE 'NA'::text
+                    END AS day_of_the_week,
+                d.count
+            FROM ( SELECT DISTINCT date_part('isodow'::text, p."timestamp") AS day_of_week,
+                        count(p."timestamp") AS count
+                    FROM podping_url_timestamp p
+                    GROUP BY (date_part('isodow'::text, p."timestamp"))
+                    ORDER BY (date_part('isodow'::text, p."timestamp"))) d;
+
+            ALTER TABLE public.podping_count_day_of_week
+                OWNER TO postgres;
+
+            """
+        self.indexes['podping_count_time_of_day']=podping_count_day_of_week
