@@ -5,17 +5,16 @@
 
 ## Documentation
 
-- [API Documentation](/docs/api/api.md)
+- [Hive Plug & Play API Documentation](/docs/api/api.md)
 
 ## Development
 
+### Dependencies:
 - Python 3.6 required
 - PostgreSQL 10+
-
-### Dependencies:
-Ubuntu Examples:
+**Install depencencies**<br/>
 - Python3 : `sudo apt install python3 python3-pip`
-- PostgreSQL (install one of):
+- PostgreSQL, install with either:
 
 | Local Server  | Client Only (Remote server) |
 | ------------- | ------------- |
@@ -77,8 +76,7 @@ op_ids=["community","notify"]
 - `cd hive_plug_play`
 - `python3 run.py`
 
-## Development Documentation
-
+### Resource Links (Developer documentation)
+- [hive.io](https://developers.hive.io/)
 - [postgresql](https://www.postgresql.org/docs/)
 - [python3](https://docs.python.org/3/)
-- [hive.io](https://developers.hive.io/)
