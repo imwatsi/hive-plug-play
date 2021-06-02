@@ -1,2 +1,14 @@
 tests/
 config.dat
+build/
+dist/
+hive_plug_play.egg-info/
+hive_plug_play/__pycache__
+hive_plug_play/__pycache__/
+hive_plug_play/database/__pycache__/
+hive_plug_play/engine/__pycache__/
+hive_plug_play/engine/plugs/__pycache__/
+hive_plug_play/hive/__pycache__/
+hive_plug_play/server/__pycache__/
+hive_plug_play/server/plug_endpoints/__pycache__/
+hive_plug_play/utils/__pycache__/
