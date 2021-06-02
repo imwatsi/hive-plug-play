@@ -33,7 +33,12 @@
   \password
   ```
   2. Update the password for the Linux User acount with the same postgresql password `sudo passwd postgres`
-- Restart the PosgreSQL service `sudo service postgreql restart`
+- Restart the PosgreSQL service
+  ```
+  sudo systemctl stop postgresql
+  sudo systemctl start postgresql
+  ```
+  Check status with `sudo systemctl status postgresql`
 
 ### Configure Hive Plug & Play
 **TLDR** build `config.ini` file:
@@ -56,7 +61,7 @@ mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-p
   db_username=postgres
   db_password=password
   server_host=127.0.0.1
-  server_port=8080
+  server_port=5432
   ssl_cert=
   ssl_key=
   start_block=53877365
