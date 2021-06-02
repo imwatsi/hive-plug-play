@@ -22,7 +22,7 @@ Ubuntu Examples:
 | ```sudo apt install postgresql-all```  | ```sudo apt install postgresql```  |
 
 **Configuration:**
--CHANGE THE posgresql PASSWORD!
+-For default postgres installs **CHANGE THE PASSWORD!**
 ```
 sudo -i -u postgres
 ```
