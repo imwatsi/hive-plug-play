@@ -11,7 +11,8 @@
 
 ### Dependencies:
 - Python 3.6 required
-- PostgreSQL 10+
+- PostgreSQL 10+<br/>
+
 **Install depencencies**<br/>
 - Python3 : `sudo apt install python3 python3-pip`
 - PostgreSQL, install with either:
@@ -20,17 +21,21 @@
 | ------------- | ------------- |
 | ```sudo apt install postgresql-all```  | ```sudo apt install postgresql```  |
 
-### Configuration:
--For default postgres installs **CHANGE THE PASSWORD!**
-```
-sudo -i -u postgres
-```
-then:
-```
-\password
-```
-follow password prompts
+### Configure PostgreSQL:
+- Configure postgresql for remote [Authentication]
+  - Update the file [pg_hba.conf](https://stackoverflow.com/a/18664239)
+- **OR** <br/>For default postgres installs on localhost, at a minimum **CHANGE THE PASSWORD!**
+  1. Update the password for the posgres database user
+  ```
+  sudo -i -u postgres
+  ```
+  ```
+  \password
+  ```
+  2. Update the password for the Linux User acount with the same postgresql password `sudo passwd postgres`
+- Restart the PosgreSQL service `sudo service postgreql restart`
 
+### Configure Hive Plug & Play
 **TLDR** build `config.ini` file:
 This one-liner from the terminal creates the required `config.ini` file, sets the environment variable and opens nano to edit. <br/>Make your updates then use <kbd>ctl</kbd>+<kbd>s</kbd> to save and <kbd>ctl</kbd>+<kbd>x</kbd> to close.
 ```
@@ -38,26 +43,25 @@ mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-p
 ```
 
 **OR** step by step build `config.ini` file:
-
-1. Hive Plug & Play requires a `config.ini` file to exist in either:
-  - Default file location of `/etc/hive-plug-play` 
-  - Or use any custom folder by setting an environment variable: `export PLUG_PLAY_HOME=~/.config/hive-plug-play`.
-2. Build the file directory:
-```
-mkdir -p ~/.config/hive-plug-play
-```
-3. Create the `config.ini` file 
-  - Any text editor should do:
-```
-db_username=postgres
-db_password=password
-server_host=127.0.0.1
-server_port=8080
-ssl_cert=
-ssl_key=
-start_block=53877365
-op_ids=["community","notify"]
-```
+  1. Hive Plug & Play requires a `config.ini` file to exist in either:
+    - Default file location of `/etc/hive-plug-play` 
+    - Or use any custom folder by setting an environment variable: `export PLUG_PLAY_HOME=~/.config/hive-plug-play`.
+  1. Build the file directory:
+  ```
+  mkdir -p ~/.config/hive-plug-play
+  ```
+  1. Create the `config.ini` file 
+    - Any text editor should do:
+  ```
+  db_username=postgres
+  db_password=password
+  server_host=127.0.0.1
+  server_port=8080
+  ssl_cert=
+  ssl_key=
+  start_block=53877365
+  op_ids=["community","notify"]
+  ```
 
 ### Installation:
 
