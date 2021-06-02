@@ -41,10 +41,12 @@
   Check status with `sudo systemctl status postgresql`
 
 ### Configure Hive Plug & Play
+Change user to your postgres account `su postgres` (this shouldn't be required if authenticating via certificate)
+
 **TLDR** build `config.ini` file:
 This one-liner from the terminal creates the required `config.ini` file, sets the environment variable and opens nano to edit. <br/>Make your updates then use <kbd>ctl</kbd>+<kbd>s</kbd> to save and <kbd>ctl</kbd>+<kbd>x</kbd> to close.
 ```
-mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-play && ([ -f ~/.config/hive-plug-play/config.ini ] || echo $'db_username=postgres\ndb_password=password\nserver_host=127.0.0.1\nserver_port=8080\nssl_cert=\nssl_key=\nstart_block=53877365\nop_ids=["community","notify"]' > ~/.config/hive-plug-play/config.ini) && nano ~/.config/hive-plug-play/config.ini
+mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-play && ([ -f ~/.config/hive-plug-play/config.ini ] || echo $'db_username=postgres\ndb_password=password\nserver_host=127.0.0.1\nserver_port=5432\nssl_cert=\nssl_key=\nstart_block=53877365\nop_ids=["community","notify"]' > ~/.config/hive-plug-play/config.ini) && nano ~/.config/hive-plug-play/config.ini
 ```
 
 **OR** step by step build `config.ini` file:
@@ -73,11 +75,13 @@ mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-p
 - Clone the repo
 - `cd hive-plug-play`
 - `pip3 install -e .`
+### Optionally install with
+- `sudo python3 setup.py install`
 
 ### Run:
 
 *From command:*
-
+Change user to your postgres account `su postgres` (this shouldn't be required if authenticating via certificate)
 `hive_plug_play`
 
 *Or from dir:*
