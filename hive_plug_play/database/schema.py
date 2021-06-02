@@ -51,7 +51,8 @@ class DbSchema:
         self.indexes['custom_json_ops_ix_block_num'] = custom_json_ops_ix_block_num
 
     def _create_views(self):
-        podping_urls_view =  """
+
+        podping_url_view =  """
             -- View: public.podping_urls
 
             -- DROP VIEW public.podping_urls;
@@ -70,4 +71,50 @@ class DbSchema:
             GRANT ALL ON TABLE public.podping_urls TO postgres;
             GRANT SELECT ON TABLE public.podping_urls TO PUBLIC;
         """
-        self.indexes['podping_urls'] = podping_urls_view
+        self.indexes['podping_url'] = podping_url_view
+
+        podping_url_timestamp="""
+            -- View: public.podping_url_timestamp
+
+            -- DROP VIEW public.podping_url_timestamp;
+
+            CREATE OR REPLACE VIEW public.podping_url_timestamp
+            AS
+            SELECT b."timestamp",
+                p.url,
+                regexp_replace("substring"(p.url, '.*://([^/]*)'::text), '^www\.?'::text, ''::text) AS host
+            FROM blocks b,
+                custom_json_ops c,
+                podping_urls p
+            WHERE b.num = c.block_num AND c.id = p.json_ops_id;
+
+            ALTER TABLE public.podping_url_timestamp
+                OWNER TO postgres;
+
+            GRANT ALL ON TABLE public.podping_url_timestamp TO postgres;
+            GRANT SELECT ON TABLE public.podping_url_timestamp TO PUBLIC;
+        """
+        self.indexes['podping_url_timestamp']=podping_url_timestamp
+
+        podping_host_summary = """
+            -- View: public.podping_host_summary
+
+            -- DROP VIEW public.podping_host_summary;
+
+            CREATE OR REPLACE VIEW public.podping_host_summary
+            AS
+            SELECT DISTINCT p.host,
+                count(p.host) AS count
+            FROM podping_url_timestamp p
+            WHERE p.host <> ''::text
+            GROUP BY p.host
+            ORDER BY (count(p.host)) DESC;
+
+            ALTER TABLE public.podping_host_summary
+                OWNER TO postgres;
+
+            GRANT ALL ON TABLE public.podping_host_summary TO postgres;
+            GRANT SELECT ON TABLE public.podping_host_summary TO pg_execute_server_program;
+            """
+        self.indexes['podping_host_summary']=podping_host_summary
+        podping_host_summary = """
