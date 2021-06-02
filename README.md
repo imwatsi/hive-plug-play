@@ -44,9 +44,10 @@
   ```
   sudo -i -u postgres
   ```
-  Create datbase
+  Create datbase, and setup permissions
   ```
   CREATE DATABASE plug_play;
+  GRANT ALL PRIVILEGES ON DATABASE plug_play TO postgres;
   ```
   Verify database was created with `\l`
 
