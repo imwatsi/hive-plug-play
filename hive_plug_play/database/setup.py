@@ -60,47 +60,8 @@ class DbSetup:
             cls.conn = psycopg2.connect(f"dbname=plug_play user={config['db_username']} password={config['db_password']}")
         except psycopg2.OperationalError as e:
             if "plug_play" in e.args[0] and "does not exist" in e.args[0]:
-                try:
-                    print("WARNING: 'plug_play' database is missing, attempting to create it")
-                    # Connect to the default db and then create the plug_play db
-                    conn = psycopg2.connect(f"dbname=postgres user={config['db_username']} password={config['db_password']}")
-                except psycopg2.OperationalError as e:
-                    if "postgres" in e.args[0] and "does not exist" in e.args[0]:
-                        print("No database found. Please create a 'plug_play' database in PostgreSQL. (failed to find db named 'postgres')")
-                        os._exit(1)
-                else:
-                    print(e)
-                    os._exit(1)
-                # Create the plug_play db
-                # https://kb.objectrocket.com/postgresql/create-a-postgresql-database-using-the-psycopg2-python-library-755
-                DB_NAME = "plug_play"
-                # get the isolation leve for autocommit
-                autocommit = extensions.ISOLATION_LEVEL_AUTOCOMMIT
-                # set the isolation level for the connection's cursors
-                # will raise ActiveSqlTransaction exception otherwise
-                conn.set_isolation_level( autocommit )
-                # instantiate a cursor object from the connection
-                cursor = conn.cursor()
-                # use the execute() method to make a SQL request
-                # use the sql module to avoid SQL injection attacks
-                cursor.execute(sql.SQL(
-                "CREATE DATABASE {}"
-                ).format(sql.Identifier( DB_NAME )))
-                # close the cursor to avoid memory leaks
-                cursor.close()
-                # close the connection to avoid memory leaks
-                conn.close()
-                # re-establish corrected connection
-                try:
-                    # TODO: retrieve authentication from config 
-                    conn = psycopg2.connect(f"dbname=plug_play user={config['db_username']} password={config['db_password']}")
-                except psycopg2.OperationalError as e:
-                    if "plug_play" in e.args[0] and "does not exist" in e.args[0]:
-                        print("No database found. Please create a 'plug_play' database in PostgreSQL.(Failed to create database)")
-                        os._exit(1)
-                else:
-                    print(e)
-                    os._exit(1)
+                print("No database found. Please create a 'plug_play' database in PostgreSQL.")
+                os._exit(1)
             else:
                 print(e)
                 os._exit(1)
