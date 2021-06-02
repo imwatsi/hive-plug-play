@@ -1,5 +1,6 @@
 tests/
 config.dat
+# Setup files
 build/
 dist/
 hive_plug_play.egg-info/

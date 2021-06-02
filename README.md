@@ -57,7 +57,7 @@ Change user to your postgres account `su postgres` (this shouldn't be required i
 **TLDR** build `config.ini` file:
 This one-liner from the terminal creates the required `config.ini` file, sets the environment variable and opens nano to edit. <br/>Make your updates then use <kbd>ctl</kbd>+<kbd>s</kbd> to save and <kbd>ctl</kbd>+<kbd>x</kbd> to close.
 ```
-mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-play && ([ -f ~/.config/hive-plug-play/config.ini ] || echo $'db_username=postgres\ndb_password=password\nserver_host=127.0.0.1\nserver_port=5432\nssl_cert=\nssl_key=\nstart_block=53877365\nop_ids=["community","notify"]' > ~/.config/hive-plug-play/config.ini) && nano ~/.config/hive-plug-play/config.ini
+mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-play && ([ -f ~/.config/hive-plug-play/config.ini ] || echo $'db_username=postgres\ndb_password=password\nserver_host=127.0.0.1\nserver_port=5432\nssl_cert=\nssl_key=\nstart_block=54000984\nop_ids=["podping","hive-hydra"]' > ~/.config/hive-plug-play/config.ini) && nano ~/.config/hive-plug-play/config.ini
 ```
 
 **OR** step by step build `config.ini` file:
@@ -77,8 +77,9 @@ mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-p
   server_port=5432
   ssl_cert=
   ssl_key=
-  start_block=53877365
-  op_ids=["community","notify"]
+  start_block=54000984
+  op_ids=["podping","hive-hydra"]
+  ;op_ids=["community","notify"]
   ```
 
 ### Installation:
