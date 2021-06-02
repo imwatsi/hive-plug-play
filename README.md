@@ -57,7 +57,7 @@ Change user to your postgres account `su postgres` (this shouldn't be required i
 **TLDR** build `config.ini` file:
 This one-liner from the terminal creates the required `config.ini` file, sets the environment variable and opens nano to edit. <br/>Make your updates then use <kbd>ctl</kbd>+<kbd>s</kbd> to save and <kbd>ctl</kbd>+<kbd>x</kbd> to close.
 ```
-mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-play && ([ -f ~/.config/hive-plug-play/config.ini ] || echo $'db_username=postgres\ndb_password=password\nserver_host=127.0.0.1\nserver_port=5432\nssl_cert=\nssl_key=\nstart_block=53877365\nop_ids=["community","notify"]' > ~/.config/hive-plug-play/config.ini) && nano ~/.config/hive-plug-play/config.ini
+mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-play && ([ -f ~/.config/hive-plug-play/config.ini ] || echo $'db_username=postgres\ndb_password=password\nserver_host=127.0.0.1\nserver_port=5432\nssl_cert=\nssl_key=\nstart_block=54000984\nop_ids=["podping","hive-hydra"]' > ~/.config/hive-plug-play/config.ini) && nano ~/.config/hive-plug-play/config.ini
 ```
 
 **OR** step by step build `config.ini` file:
@@ -77,9 +77,23 @@ mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-p
   server_port=5432
   ssl_cert=
   ssl_key=
-  start_block=53877365
+  start_block=54000984
   op_ids=["community","notify"]
   ```
+
+### Configure data collection for a specific project or application
+Project specific op_ids
+
+|Project Name| Value |
+|----------------|-------------|
+| [podping](podping.cloud) | podping,hive-hydra |
+| 3speak | 3speak-publish |
+| actifit | actifit |
+| DCity | dcity, dcity-bg-save, dcitystats |
+| peakd | peakd_notify |
+| reblog | reblog |
+| CBM | cbm__backpack__drink_beer,	cbm__balance__deposit,	cbm__building__rent,	cbm__building__restore_condition,	cbm__craft__claim,	cbm__craft__finish_now,	cbm__craft__start,	cbm__daily_quests__claim,	cbm__daily_quests__finish_now,	cbm__daily_quests__start,	cbm__enhancer__claim,	cbm__enhancer__start,	cbm__market__completed_purchase,	cbm__market__completed_sale,	cbm__market__placed_a_sell_order,	cbm__pub__drink_beer,	cbm__pub__sold_beer,	cbm__referral__claim |
+| many more exist | (hundreds) |
 
 ### Installation:
 

@@ -1,5 +1,4 @@
 import os
-
 import psycopg2
 
 from hive_plug_play.database.schema import DbSchema, DB_VERSION
