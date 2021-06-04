@@ -5,7 +5,8 @@
 
 ## Documentation
 
-- [Hive Plug & Play API Documentation](/docs/api/api.md)
+- [Hive Plug & Play API Documentation](https://github.com/imwatsi/hive-plug-play/wiki#api-documentation)
+- [Tutorials](https://github.com/imwatsi/hive-plug-play/wiki#tutorials)
 
 ## Development
 
