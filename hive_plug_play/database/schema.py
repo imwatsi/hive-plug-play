@@ -63,13 +63,8 @@ class DbSchema:
                 json_array_elements_text((jo.op_json ->> 'urls'::text)::json) AS url
             FROM custom_json_ops jo;
 
-            ALTER TABLE public.podping_urls
-                OWNER TO postgres;
             COMMENT ON VIEW public.podping_urls
                 IS 'expands all custom json arrays labled as ''urls'' to individual url elements';
-
-            GRANT ALL ON TABLE public.podping_urls TO postgres;
-            GRANT SELECT ON TABLE public.podping_urls TO PUBLIC;
         """
         self.indexes['podping_url'] = podping_url_view
 
@@ -87,12 +82,6 @@ class DbSchema:
                 custom_json_ops c,
                 podping_urls p
             WHERE b.num = c.block_num AND c.id = p.json_ops_id;
-
-            ALTER TABLE public.podping_url_timestamp
-                OWNER TO postgres;
-
-            GRANT ALL ON TABLE public.podping_url_timestamp TO postgres;
-            GRANT SELECT ON TABLE public.podping_url_timestamp TO PUBLIC;
         """
         self.indexes['podping_url_timestamp']=podping_url_timestamp
 
@@ -109,12 +98,6 @@ class DbSchema:
             WHERE p.host <> ''::text
             GROUP BY p.host
             ORDER BY (count(p.host)) DESC;
-
-            ALTER TABLE public.podping_host_summary
-                OWNER TO postgres;
-
-            GRANT ALL ON TABLE public.podping_host_summary TO postgres;
-            GRANT SELECT ON TABLE public.podping_host_summary TO pg_execute_server_program;
             """
         self.indexes['podping_host_summary']=podping_host_summary
         podping_count_time_of_day = """
@@ -129,9 +112,6 @@ class DbSchema:
             FROM podping_url_timestamp p
             GROUP BY (date_part('hour'::text, p."timestamp"))
             ORDER BY (date_part('hour'::text, p."timestamp"));
-
-            ALTER TABLE public.podping_count_time_of_day
-                OWNER TO postgres;
         """
         self.indexes['podping_count_time_of_day']=podping_count_time_of_day
         podping_count_day_of_week = """
@@ -158,9 +138,5 @@ class DbSchema:
                     FROM podping_url_timestamp p
                     GROUP BY (date_part('isodow'::text, p."timestamp"))
                     ORDER BY (date_part('isodow'::text, p."timestamp"))) d;
-
-            ALTER TABLE public.podping_count_day_of_week
-                OWNER TO postgres;
-
             """
         self.indexes['podping_count_time_of_day']=podping_count_day_of_week
