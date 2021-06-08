@@ -10,13 +10,13 @@
 ## Development
 
 ### Dependencies:
-- Python 3.6 required
+- Python 3.6 required (with pip,  libpq-dev, and Psycopg2)
 - PostgreSQL 10+<br/>
 
 **Install depencencies**<br/>
 - Python3 and PostgreSQL : 
 ```
-sudo apt install python3 python3-pip postgresql
+sudo apt install python3 python3-pip libpq-dev python3-psycopg2 postgresql
 ```
 
 ### Configure PostgreSQL:
@@ -109,15 +109,18 @@ mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-p
 | many more exist | (hundreds) |
 
 ### Installation:
-- Install as a python package from directory
+- Download from github and install as a python package from directory
   ```
+  sudo -i -u postgres
   cd ~/
-  git clone git@github.com:seakintruth/hive-plug-play.git
+  # This example is for the podping project
+  # git clone git@github.com:imwatsi/hive-plug-play.git
+  git clone https://github.com/seakintruth/hive-plug-play.git
   cd ~/hive-plug-play
+  git checkout podping
   pip3 install -e .
+
   ```
-### Optionally install with
-- `sudo python3 setup.py install`
 
 ### Run:
 
