@@ -109,9 +109,11 @@ mkdir -p ~/.config/hive-plug-play && export PLUG_PLAY_HOME=~/.config/hive-plug-p
 | many more exist | (hundreds) |
 
 ### Installation:
-- Install as a python package from directory (wherever it is)
+- Install as a python package from directory
   ```
-  cd /data/hive-plug-play
+  cd ~/
+  git clone git@github.com:seakintruth/hive-plug-play.git
+  cd ~/hive-plug-play
   pip3 install -e .
   ```
 ### Optionally install with
